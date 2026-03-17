@@ -25,12 +25,17 @@ const phoneInput = document.getElementById("contact-phone");
 const emailInput = document.getElementById("contact-email");
 
 function validateContact(data) {
-  if (!data.name || data.name.length < 2 || data.name.length > 50)
+  if (!data.name || data.name.length < 2 || data.name.length > 50) {
     return "Họ tên không hợp lệ!";
-  if (!data.phone || !/^0[3|5|7|8|9]\d{8}$/.test(data.phone))
+  }
+
+  if (!data.phone || !/^0[3|5|7|8|9]\d{8}$/.test(data.phone)) {
     return "Số điện thoại phải 10 chữ số bắt đầu 0!";
-  if (!data.email || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(data.email))
+  }
+
+  if (!data.email || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(data.email)) {
     return "Email không hợp lệ!";
+  }
   return null;
 }
 
@@ -84,8 +89,12 @@ function deleteContact(index) {
 
 tbody.addEventListener("click", (e) => {
   const id = e.target.dataset.id;
-  if (id === undefined) return;
-  if (e.target.classList.contains("btn-delete")) deleteContact(Number(id));
+  if (id === undefined) {
+    return;
+  }
+  if (e.target.classList.contains("btn-delete")) {
+    deleteContact(Number(id));
+  }
 });
 
 form.addEventListener("submit", addContact);
